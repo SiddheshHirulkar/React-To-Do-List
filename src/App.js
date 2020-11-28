@@ -1,24 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import $ from 'jquery';
+import Popper from 'popper.js';
+import Search from './components/Search';
+import List from './components/List';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css'
 
 function App() {
+  
+  const [item, setItem] = useState('');
+
+  const [element, setElement] = useState([]);
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container d-flex justify-content-center">
+      <div className="bg-secondary text-center box-card col-lg-8">
+        <h1 className="font-weight-bold">To Do List</h1>
+          <Search item={item} setItem={setItem} element={element} setElement={setElement} />
+          <List element={element} setElement={setElement} />
+      </div>
     </div>
   );
 }
